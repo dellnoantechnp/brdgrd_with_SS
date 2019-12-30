@@ -40,7 +40,7 @@ wget http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_que
 
 ### 说明
 `libnetfilter_queue` 用于将数据包从kernel into user space。
-`brdgrd` 只是通过 libnetfilter_queue 获取TCP SYN,ACK SYN,SCK 这三种TCP握手数据包的 `Window size value: **`，并重写用于握手建立的 window size，所以对于性能开销很小。
+`brdgrd` 只是通过 libnetfilter_queue 获取TCP的 SYN,ACK SYN,ACK 这三种TCP数据包的 `Window size value: **`，并重写用于连接通信确认的 window size，所以对于性能开销很小。
 
 经过 brdgrd 过滤过后的流量，能极大限度的逃避 *** 的主动监测，在*铭感十七* 能够最大限度的保护服务端安全运行。
 
