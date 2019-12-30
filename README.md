@@ -17,9 +17,10 @@ sudo apt install build-essentials   # ubuntu
 git clone https://github.com/NullHypothesis/brdgrd
 cd brdgrd
 make -j 4
-iptables -A OUTPUT -p tcp --tcp-flags SYN,ACK SYN,ACK --sport $SSPORT -j NFQUEUE --queue-num 0
+iptables -A OUTPUT -p tcp --tcp-flags SYN,ACK SYN,ACK --sport $SSPORT -j NFQUEUE --queue-num 0 [--queue-bypass]
 ./brdgrd
 ```
+> **--queue-bypass** : 当user space程序 brdgrd 没有运行的时候，iptables rule 继续往下匹配，brdgrd 程序退出的时候，不进行流量丢弃操作。
 
 ### 注意事项
 编译 `brdgrd` 报错，`libnetfilter_queue.h` 头文件缺失：
