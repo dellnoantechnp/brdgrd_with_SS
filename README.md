@@ -35,6 +35,7 @@ wget http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_que
 
 (tar -xf libnfnetlink-1.0.1.tar.bz2 && cd libnfnetlink-1.0.1 && ./configure && make && make install)
 (tar -xf libmnl-1.0.3.tar.bz2 && cd libmnl-1.0.3 && ./configure && make && make install)
+(export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig)
 (tar -xf libnetfilter_queue-1.0.2.tar.bz2 && cd libnetfilter_queue-1.0.2 && ./configure && make && make install)
 ```
 以上三个依赖包安装结束后，就可以正常编译 brdgrd 了。
