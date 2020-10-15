@@ -1,5 +1,5 @@
 ### 简介
-利用 [brdgrd](https://github.com/NullHypothesis/brdgrd) 可在用户空间随机调整 TCP window size 的特性，保证 Shadowsocks 及其分支工具能够更健壮的进行数据交互，减少被不明高墙主动探测和 block 的风险。
+利用 [brdgrd](https://github.com/NullHypothesis/brdgrd) 可在用户空间随机调整 TCP window size 的特性，保证 Sha￥dow￥sock￥s 及其分支工具能够更健壮的进行数据交互，减少被不明高墙主动探测和 block 的风险。
 
 ### 测试环境
 * CentOS 7.x
