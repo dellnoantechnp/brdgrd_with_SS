@@ -37,14 +37,15 @@ wget http://www.netfilter.org/projects/libnetfilter_queue/files/libnetfilter_que
 (tar -xf libmnl-1.0.3.tar.bz2 && cd libmnl-1.0.3 && ./configure && make && make install)
 (export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig)
 (tar -xf libnetfilter_queue-1.0.2.tar.bz2 && cd libnetfilter_queue-1.0.2 && ./configure && make && make install)
+(echo /usr/local/lib >> /etc/ld.so.conf && ldconfig)
 ```
-以上三个依赖包安装结束后，就可以正常编译 brdgrd 了。
+以上三个依赖包安装结束后，配置好动态链接库之后，就可以正常编译和运行 `brdgrd` 了。
 
 ### 说明
 `libnetfilter_queue` 用于将数据包从kernel into user space。
-`brdgrd` 只是通过 libnetfilter_queue 获取TCP的 *SYN,ACK* **SYN,ACK** 这两种TCP flag数据包的 `Window size value: **`，并重写用于连接通信确认的 window size，所以对于性能开销很小（对于ss来说，仅匹配 ACK，所以开销非常小）。
+`brdgrd` 只是通过 libnetfilter_queue 获取TCP的 **SYN,ACK** **SYN,ACK** 这两种TCP flag数据包的 `Window size value: **`，并重写用于连接通信确认的 window size，所以对于性能开销很小（对于ss来说，仅匹配 ACK，所以开销非常小）。
 
-经过 brdgrd 过滤过后的流量，能极大限度的逃避 *** 的主动监测，在*铭感十七* 能够最大限度的保护服务端安全运行。
+经过 `brdgrd` 过滤过后的流量，能极大限度的逃避 *** 的主动监测，在*铭感十七* 能够最大限度的保护服务端安全运行。
 
 请确保 `iptables.service` | `firewalld.service` 始终运行(enabled)。
 
